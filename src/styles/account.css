@@ -1,0 +1,102 @@
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #f8f9fa;
+  --hover-color: #e7f1ff;
+  --text-color: #2d3436;
+  --hover-text-color: #007bff;
+  --active-color: #007bff;
+  --active-text-color: #ffffff;
+  --border-color: #e9ecef;
+  --border-radius: 12px;
+  --transition-duration: 0.2s;
+}
+
+.account {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background-color: var(--primary-color);
+  height: max-content;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.account-left {
+  width: 100%;
+  max-width: 30%;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-right: 1px solid var(--border-color);
+}
+
+.account-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.account-route {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.account-item {
+  border: 1px solid var(--border-color);
+  padding: 14px 20px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all var(--transition-duration) ease;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.account-item:hover {
+  transform: translateX(5px);
+  background-color: var(--hover-color);
+  color: var(--hover-text-color);
+  border-color: var(--hover-text-color);
+}
+
+.account-item.active {
+  background-color: var(--active-color);
+  color: var(--active-text-color);
+  border-color: var(--active-color);
+  transform: translateX(5px);
+}
+
+.account-right {
+  width: 100%;
+  max-width: 70%;
+  padding: 30px;
+  background-color: var(--primary-color);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+@media (max-width: 768px) {
+  .account {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  .account-left,
+  .account-right {
+    max-width: 100%;
+    padding: 20px 15px;
+  }
+
+  .account-item {
+    text-align: center;
+  }
+}

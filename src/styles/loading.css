@@ -1,0 +1,43 @@
+/* Container untuk menampung semua elemen loading */
+.loading-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+}
+
+/* Styling untuk setiap lingkaran */
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #007bff;
+  margin: 0 5px;
+  animation: slide 1.2s infinite ease-in-out;
+}
+
+/* Animasi sliding untuk lingkaran */
+@keyframes slide {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+/* Menambahkan delay berbeda pada setiap lingkaran untuk efek animasi yang bertahap */
+.circle:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.circle:nth-child(3) {
+  animation-delay: 0.4s;
+}

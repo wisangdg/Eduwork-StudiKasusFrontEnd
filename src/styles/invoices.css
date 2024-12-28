@@ -1,0 +1,90 @@
+/* eduwork-client/src/styles/invoices.css */
+
+.invoice-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.invoice-container h2 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.invoice-container h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #666;
+}
+
+.invoice-container p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #444;
+}
+
+.invoice-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.invoice-container ul li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.invoice-container .loading,
+.invoice-container .error {
+  font-size: 18px;
+  color: #d9534f; /* Warna merah untuk error */
+}
+
+.invoice-container .loading {
+  color: #5bc0de; /* Warna biru untuk loading */
+}
+
+.invoice-container .total {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.delivery-address {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.delivery-address h4 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.back-home-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Warna biru */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.back-home-button:hover {
+  background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+}
+
+.back-home-button:focus {
+  outline: none; /* Menghilangkan outline saat tombol difokuskan */
+}
