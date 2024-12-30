@@ -1,8 +1,8 @@
 import axios from "axios";
-import apiConfig from "./apiConfig.js";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const axiosInstance = axios.create({
-  baseURL: apiConfig.baseURL,
+  baseURL: apiUrl,
 });
 
 export default axiosInstance;
