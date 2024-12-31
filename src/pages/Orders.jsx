@@ -14,6 +14,7 @@ const Orders = () => {
   const navigate = useNavigate();
 
   const fetchOrders = useCallback(async () => {
+    setLoading(true);
     try {
       const response = await axiosInstance.get("/api/orders", {
         headers: {
@@ -109,9 +110,7 @@ const Orders = () => {
               <p>Order id: {order._id}</p>
               <p>
                 Status:{" "}
-                <span className={`status-${orders.status}`}>
-                  {orders.status}
-                </span>
+                <span className={`status-${order.status}`}>{order.status}</span>
               </p>
               <p>
                 Sub Total: Rp.{" "}

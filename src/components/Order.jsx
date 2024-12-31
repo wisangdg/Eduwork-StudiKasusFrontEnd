@@ -13,6 +13,7 @@ const Order = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
+      setLoading(true);
       try {
         const response = await axiosInstance.get("/api/orders", {
           headers: {

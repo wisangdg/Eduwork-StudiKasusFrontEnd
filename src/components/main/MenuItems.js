@@ -83,17 +83,9 @@ export default function MenuItems({
   };
 
   useEffect(() => {
-    console.log("Fetching with:", {
-      currentPage,
-      activeTags,
-      searchKeyword,
-      selectedCategory: selectedCategory
-        ? selectedCategory._id === "all"
-          ? "All Categories"
-          : selectedCategory.originalName || selectedCategory.name
-        : "No Category Selected",
-    });
     const loadMenus = async () => {
+      console.log("Start loading"); // Debug log
+      setLoading(true);
       try {
         const response = await fetchMenus(
           currentPage,
@@ -103,12 +95,14 @@ export default function MenuItems({
             ? { ...selectedCategory, name: selectedCategory.originalName }
             : undefined
         );
-        console.log("Filtered Menus:", response.data);
         setMenus(response.data);
         setTotalPages(response.totalPages || 1);
       } catch (error) {
         console.error("Error fetching menus:", error);
         alert("Failed to fetch menus. Please try again later.");
+      } finally {
+        console.log("End loading"); // Debug log
+        setLoading(false);
       }
     };
     loadMenus();
@@ -132,7 +126,7 @@ export default function MenuItems({
       <div className="menu-items">
         {loading ? (
           <Loading />
-        ) : (
+        ) : menus.length > 0 ? (
           menus.map((menu) => (
             <MenuItem
               key={menu._id}
@@ -141,6 +135,8 @@ export default function MenuItems({
               handleAddCart={handleAddCart}
             />
           ))
+        ) : (
+          <p>No menus found</p>
         )}
       </div>
       <Pagination

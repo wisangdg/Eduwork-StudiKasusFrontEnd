@@ -12,10 +12,11 @@ function Tags() {
     axiosInstance
       .get("/api/tags")
       .then((response) => {
-        setTags(response.data);
+        setTags(Array.isArray(response.data) ? response.data : []);
       })
       .catch((error) => {
         console.error("There was an error fetching the tags!", error);
+        setTags([]);
       });
   }, []);
 
@@ -27,17 +28,18 @@ function Tags() {
     <div className="tags">
       <h2 className="tags-title">Tags:</h2>
       <ul className="tags-list">
-        {tags.map((tag) => (
-          <li
-            key={tag._id}
-            className={`tag-item ${
-              activeTags.find((t) => t._id === tag._id) ? "active" : ""
-            }`}
-            onClick={() => handleClickTags(tag)}
-          >
-            {tag.name}
-          </li>
-        ))}
+        {Array.isArray(tags) &&
+          tags.map((tag) => (
+            <li
+              key={tag._id}
+              className={`tag-item ${
+                activeTags.find((t) => t._id === tag._id) ? "active" : ""
+              }`}
+              onClick={() => handleClickTags(tag)}
+            >
+              {tag.name}
+            </li>
+          ))}
       </ul>
     </div>
   );

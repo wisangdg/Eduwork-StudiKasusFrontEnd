@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "./api/axiosInstance.js";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, useLocation } from "react-router";
@@ -23,11 +23,14 @@ function App() {
         return;
       }
 
-      const response = await axios.get("http://localhost:3000/auth/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axiosInstance.get(
+        `${process.env.REACT_APP_API_URL}/auth/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.status === 200) {
         dispatch(
@@ -51,8 +54,9 @@ function App() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/categories");
-      console.log("Fetched categories:", response.data);
+      const response = await axiosInstance.get(
+        `${process.env.REACT_APP_API_URL}/api/categories`
+      );
       return response.data;
     } catch (error) {
       console.error("Failed to fetch categories:", error);

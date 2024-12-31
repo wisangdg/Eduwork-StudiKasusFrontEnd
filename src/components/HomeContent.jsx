@@ -7,14 +7,17 @@ import Footer from "./Footer";
 import { useLocation } from "react-router";
 
 export default function HomeContent({ searchKeyword, selectedCategory }) {
-  console.log("Selected Category in HomeContent:", selectedCategory);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     if (location.pathname === "/") {
+      console.log("Start loading"); // Debug log
       setLoading(true);
-      setTimeout(() => setLoading(false), 1000);
+      setTimeout(() => {
+        setLoading(false);
+        console.log("End loading"); // Debug log
+      }, 1000);
     }
   }, [location.pathname]);
 

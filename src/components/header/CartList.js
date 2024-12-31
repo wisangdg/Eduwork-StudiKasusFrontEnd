@@ -30,7 +30,8 @@ const CartList = () => {
   useEffect(() => {
     const fetchCartData = async () => {
       try {
-        dispatch(fetchCart(token));
+        setLoading(true);
+        await dispatch(fetchCart(token));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching cart:", error);
@@ -39,20 +40,24 @@ const CartList = () => {
       }
     };
 
-    if (isLoggedIn) {
+    if (isLoggedIn && token) {
       fetchCartData();
+    } else {
+      setLoading(false);
     }
   }, [isLoggedIn, token, dispatch]);
 
   useEffect(() => {
     // Update cartQty and totalPrice when cart changes
-    setCartQty(cart.length);
-    const total = cart.reduce((acc, item) => {
-      const price = item.product?.price || 0;
-      const quantity = item.quantity || 1;
-      return acc + price * quantity;
-    }, 0);
-    setTotalPrice(total);
+    if (cart) {
+      setCartQty(cart.length);
+      const total = cart.reduce((acc, item) => {
+        const price = item.product?.price || 0;
+        const quantity = item.quantity || 1;
+        return acc + price * quantity;
+      }, 0);
+      setTotalPrice(total);
+    }
   }, [cart]);
 
   useEffect(() => {
@@ -64,7 +69,7 @@ const CartList = () => {
   }, []);
 
   const toggleCartVisibility = () => {
-    setIsCartVisible((prevState) => !prevState);
+    setIsCartVisible(!isCartVisible);
   };
 
   const handleCheckout = async () => {
@@ -193,7 +198,7 @@ const CartList = () => {
 
       {isCartVisible && (
         <div className="cart-list">
-          {cart.length > 0 ? (
+          {cart && cart.length > 0 ? (
             cart.map((cartItem) => (
               <div key={cartItem._id} className="cart-item">
                 {cartItem.product && (
@@ -222,7 +227,7 @@ const CartList = () => {
           ) : (
             <p>No items in cart</p>
           )}
-          {cart.length > 0 && (
+          {cart && cart.length > 0 && (
             <div>
               <h3 className="totalprice">
                 Total Price: Rp.{formatPrice(totalPrice)}

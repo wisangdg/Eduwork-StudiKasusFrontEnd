@@ -14,6 +14,7 @@ const Invoices = () => {
 
   useEffect(() => {
     const fetchInvoice = async () => {
+      setLoading(true);
       try {
         console.log("Fetching invoice for order ID:", orderId);
         const response = await axiosInstance.get(`/api/invoices/${orderId}`, {

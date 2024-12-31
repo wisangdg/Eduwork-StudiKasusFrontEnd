@@ -19,10 +19,12 @@ function Register() {
     }
   }, [location.pathname]);
 
-  if (location.pathname === "/register" && (email || password)) {
-    setEmail("");
-    setPassword("");
-  }
+  useEffect(() => {
+    if (location.pathname === "/register" && (email || password)) {
+      setEmail("");
+      setPassword("");
+    }
+  }, [location.pathname, email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +36,7 @@ function Register() {
       alert("Please enter a valid email address");
       return;
     }
+    setLoading(true);
     try {
       console.log("Sending request to /auth/register with:", {
         email,
@@ -44,13 +47,15 @@ function Register() {
         password: password,
       });
       console.log("Response:", response.data);
-      alert("register successful");
+      alert("Register successful");
       navigate("/", { replace: true });
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error("Error during registration:", error);
       alert(
         error.response?.data?.message || "Failed to register email or password"
       );
+    } finally {
+      setLoading(false);
     }
   };
 
