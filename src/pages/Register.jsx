@@ -20,11 +20,11 @@ function Register() {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (location.pathname === "/register" && (email || password)) {
+    if (location.pathname === "/register") {
       setEmail("");
       setPassword("");
     }
-  }, [location.pathname, email, password]);
+  }, [location.pathname]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
