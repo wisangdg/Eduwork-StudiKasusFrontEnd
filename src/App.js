@@ -24,7 +24,6 @@ function App() {
       }
 
       const response = await axiosInstance.get("/auth/me", {
-        // Use axiosInstance
         headers: {
           Authorization: `Bearer ${token}`,
         },
