@@ -20,16 +20,14 @@ const Header = ({ handleSearchChange, categories = [], onSelectCategory }) => {
     );
   };
 
-  // Create a new array with 'Semua' as the first option followed by mapped categories
+  const safeCategories = Array.isArray(categories) ? categories : [];
   const categoryOptions = [
     { _id: "all", name: "Semua", originalName: "all" },
-    ...(categories
-      ? categories.map((cat) => ({
-          ...cat,
-          name: categoryNameMap[cat.name] || cat.name,
-          originalName: cat.name, // Menyimpan nama asli dari backend
-        }))
-      : []),
+    ...safeCategories.map((cat) => ({
+      ...cat,
+      name: categoryNameMap[cat.name] || cat.name,
+      originalName: cat.name,
+    })),
   ];
 
   return (
