@@ -3,7 +3,7 @@ import {
   createSlice,
   createAsyncThunk,
 } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosInstance from "../src/api/axiosInstance.js";
 
 const authSlice = createSlice({
   name: "auth",
@@ -66,7 +66,7 @@ export const { setCart } = cartSlice.actions;
 export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
   async (token, { dispatch }) => {
-    const response = await axios.get("http://localhost:3000/api/carts", {
+    const response = await axiosInstance.get("/api/carts", {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch(setCart(response.data));

@@ -12,11 +12,9 @@ export default function HomeContent({ searchKeyword, selectedCategory }) {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      console.log("Start loading"); // Debug log
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-        console.log("End loading"); // Debug log
       }, 1000);
     }
   }, [location.pathname]);

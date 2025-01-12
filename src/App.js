@@ -23,14 +23,12 @@ function App() {
         return;
       }
 
-      const response = await axiosInstance.get(
-        `${process.env.REACT_APP_API_URL}/auth/me`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axiosInstance.get("/auth/me", {
+        // Use axiosInstance
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.status === 200) {
         dispatch(
@@ -54,9 +52,7 @@ function App() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axiosInstance.get(
-        `${process.env.REACT_APP_API_URL}/api/categories`
-      );
+      const response = await axiosInstance.get("/api/categories"); // Use axiosInstance
       return response.data;
     } catch (error) {
       console.error("Failed to fetch categories:", error);

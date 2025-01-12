@@ -21,7 +21,7 @@ const fetchMenus = async (page, activeTag, searchKeyword, selectedCategory) => {
   }
 
   if (selectedCategory && selectedCategory._id !== "all") {
-    params.category = selectedCategory.name; // Menggunakan nama kategori asli dari backend
+    params.category = selectedCategory.name;
   }
 
   const response = await axiosInstance.get("/api/products", {
@@ -35,7 +35,7 @@ const MenuItem = ({ menu, formatPrice, handleAddCart }) => (
   <div key={menu._id} className="menu-item">
     <img
       className="menu-item-image"
-      src={`http://localhost:3000/images/products/${menu.image_url}`}
+      src={`${process.env.REACT_APP_API_URL}/images/products/${menu.image_url}`}
       alt={menu.name}
     />
     <h2>{menu.name}</h2>
@@ -84,7 +84,6 @@ export default function MenuItems({
 
   useEffect(() => {
     const loadMenus = async () => {
-      console.log("Start loading"); // Debug log
       setLoading(true);
       try {
         const response = await fetchMenus(
@@ -101,7 +100,6 @@ export default function MenuItems({
         console.error("Error fetching menus:", error);
         alert("Failed to fetch menus. Please try again later.");
       } finally {
-        console.log("End loading"); // Debug log
         setLoading(false);
       }
     };
@@ -126,7 +124,7 @@ export default function MenuItems({
       <div className="menu-items">
         {loading ? (
           <Loading />
-        ) : menus.length > 0 ? (
+        ) : menus && menus.length > 0 ? (
           menus.map((menu) => (
             <MenuItem
               key={menu._id}
