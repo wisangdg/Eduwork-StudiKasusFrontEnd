@@ -12,9 +12,6 @@ const Footer = () => {
 
 const styles = {
   footer: {
-    position: "relative",
-    bottom: 0,
-    width: "100%",
     backgroundColor: "#4a90e2",
     color: "#fff",
     textAlign: "center",
