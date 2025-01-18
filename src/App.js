@@ -9,6 +9,7 @@ import Register from "./pages/Register.jsx";
 import Account from "./pages/Account.jsx";
 import Orders from "./pages/Orders.jsx";
 import Invoices from "./components/Invoices.jsx";
+import "../src/styles/app.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ function App() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axiosInstance.get("/api/categories"); // Use axiosInstance
+      const response = await axiosInstance.get("/api/categories");
       return response.data;
     } catch (error) {
       console.error("Failed to fetch categories:", error);
