@@ -51,11 +51,13 @@ const CartList = () => {
     // Update cartQty and totalPrice when cart changes
     if (cart) {
       setCartQty(cart.length);
-      const total = cart.reduce((acc, item) => {
-        const price = item.product?.price || 0;
-        const quantity = item.quantity || 1;
-        return acc + price * quantity;
-      }, 0);
+      const total = Array.isArray(cart)
+        ? cart.reduce((acc, item) => {
+            const price = item.product?.price || 0;
+            const quantity = item.qty || 1; // Changed from item.quantity to item.qty
+            return acc + price * quantity;
+          }, 0)
+        : 0;
       setTotalPrice(total);
     }
   }, [cart]);
