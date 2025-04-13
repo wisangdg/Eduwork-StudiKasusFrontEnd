@@ -182,3 +182,91 @@
 .confirm-dialog button:first-of-type:hover {
   background-color: #0056b3;
 }
+
+/* Media queries untuk responsivitas */
+@media (max-width: 768px) {
+  .login,
+  .register {
+    height: auto;
+    min-height: 80vh;
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .login-title,
+  .register-title {
+    font-size: 28px;
+  }
+
+  .login-form,
+  .register-form {
+    max-width: 100%;
+  }
+
+  #login-email,
+  #login-password,
+  #login-button,
+  #register-email,
+  #register-password,
+  #register-button {
+    height: 2.2rem;
+    font-size: 14px;
+  }
+
+  .confirm-dialog {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .confirm-dialog button {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .login,
+  .register {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .login-title,
+  .register-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  #login-email,
+  #login-password,
+  #login-button,
+  #register-email,
+  #register-password,
+  #register-button {
+    margin: 8px 0;
+    height: 2rem;
+    font-size: 13px;
+  }
+
+  #register-redirect {
+    font-size: 13px;
+    margin: 0.8rem;
+    padding: 8px;
+  }
+
+  .confirm-dialog {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .confirm-dialog p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .confirm-dialog button {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin: 0 5px;
+  }
+}

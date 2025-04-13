@@ -14,6 +14,22 @@
   height: auto;
 }
 
+@media (max-width: 768px) {
+  .cart-list {
+    width: 280px;
+    right: -50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-list {
+    width: 250px;
+    right: -70px;
+    max-height: 350px;
+    padding: 12px;
+  }
+}
+
 .cart-item {
   padding: 12px;
   border-bottom: 1px solid #eee;

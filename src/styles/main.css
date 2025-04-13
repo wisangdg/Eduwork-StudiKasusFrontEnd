@@ -328,13 +328,115 @@ body {
   }
 }
 
+@media (max-width: 992px) {
+  .search-box {
+    width: 15rem;
+  }
+
+  .edustore-logo {
+    font-size: 1.5rem;
+  }
+
+  .kategori-dropdown {
+    padding: 0.6rem 1rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .header {
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    order: 1;
+    flex: 1;
+  }
+
+  .kategori {
+    order: 3;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .kategori-dropdown {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-box-container {
+    order: 2;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .cart-container,
+  .icons-button {
+    order: 4;
+  }
+
   .menu-items {
     padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .menu-item {
+    min-width: auto;
+    padding: 0.8rem;
+  }
+
+  .menu-item-image {
+    height: 12rem;
+    margin: 0.5rem;
   }
 
   .content-container {
     padding: 0 1rem;
+  }
+
+  .home-title,
+  .tags-title {
+    margin-left: 1rem;
+  }
+
+  .pagination button {
+    padding: 0.6rem 1rem;
+    margin: 0 0.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .edustore-logo {
+    font-size: 1.2rem;
+  }
+
+  .menu-items {
+    grid-template-columns: 1fr;
+    padding: 0.8rem;
+  }
+
+  .menu-item {
+    max-width: 100%;
+  }
+
+  .menu-item-image {
+    height: 10rem;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    left: 0;
   }
 }
 
